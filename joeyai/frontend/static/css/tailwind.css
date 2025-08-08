@@ -1,0 +1,9 @@
+/* Tailwind CSS will be precompiled here. Add custom variables for neon theme. */
+:root {
+  --color-bg: #0a0a0a;
+  --color-accent: #00ffe7;
+  --color-accent-glow: #00ffe7cc;
+}
+body {
+  background: var(--color-bg);
+}
