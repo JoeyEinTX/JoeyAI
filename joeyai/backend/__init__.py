@@ -25,6 +25,10 @@ def create_app():
     app.register_blueprint(messages_bp)
     app.register_blueprint(search_bp)
     app.register_blueprint(health_bp)
+    from .routes.conversation_routes import conversations_bp
+    from .routes.chat_routes import chat_bp
+    app.register_blueprint(conversations_bp)
+    app.register_blueprint(chat_bp)
 
     @app.route("/")
     def index():
