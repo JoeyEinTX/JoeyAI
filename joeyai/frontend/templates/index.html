@@ -1,40 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JoeyAI</title>
-  <link href="/static/css/tailwind.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
-<body class="bg-black text-cyan-300">
-  <aside class="sidebar fixed left-0 top-0 h-full w-[320px] bg-black shadow-lg"></aside>
-  <div class="ml-[320px]">
-    <header class="topbar flex items-center px-6 py-4">
-      <img id="wordmark" src="/static/img/joeyai_wordmark.png" class="h-8 hidden" />
-      <div class="ml-auto flex gap-4">
+<body class="theme-joey">
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Chats</h2>
+      </div>
+      <ul id="chatList" class="chat-list">
+        <!-- Chat list items will go here -->
+      </ul>
+    </aside>
+    <header id="topbar" class="topbar">
+      <div class="brand">
+        <img id="brandWordmark" src="{{ url_for('static', filename='img/joeyai_wordmark.png') }}" alt="JoeyAI" />
+      </div>
+      <div class="topbar-actions">
         <label><input type="checkbox" id="autoSave"> Auto-save Chats</label>
-        <button id="memoryBtn" disabled class="shadow-neon">Memory</button>
+        <button id="memoryBtn" disabled class="pill">Memory</button>
       </div>
     </header>
-    <main class="main p-8">
-      <section id="logoHero" class="flex flex-col items-center justify-center">
-        <img src="/static/img/joeyai_poster.png" class="mb-8" />
+    <main class="main">
+      <section id="logoHero" class="logo-hero">
+        <img src="{{ url_for('static', filename='img/joeyai_poster.png') }}" alt="JoeyAI Poster" />
       </section>
-      <div id="chatArea" class="chat-area start grid grid-rows-[0fr_auto] transition-all">
-        <div id="messages" class="hidden"></div>
-        <form id="composer" class="w-full flex gap-2 mt-4">
-          <textarea id="promptInput" rows="2" class="flex-1 bg-black text-cyan-300 border border-cyan-500 rounded shadow-neon"></textarea>
-          <button id="sendBtn" type="submit" class="px-4 py-2 bg-cyan-500 text-black rounded shadow-neon">Send</button>
+      <section id="chatArea" class="chat-area start">
+        <div id="messages" class="messages"></div>
+        <form id="composer" class="composer" autocomplete="off">
+          <textarea id="promptInput" placeholder="Enter your prompt here…"></textarea>
+          <div class="composer-actions">
+            <button id="sendBtn" type="submit" class="btn primary">Send</button>
+            <button type="button" class="btn">Advanced</button>
+            <button type="button" class="btn">Clear</button>
+            <button type="button" class="btn">Deep Reasoning</button>
+            <button type="button" class="btn">Code Audit</button>
+            <button type="button" class="btn">Edge Cases</button>
+          </div>
         </form>
-      </div>
-      <div id="memoryModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center">
-        <div class="bg-gray-900 p-6 rounded shadow-neon">
-          <input type="text" id="memorySearch" placeholder="Search memory..." class="w-full mb-4" />
-          <ul id="memoryResults"></ul>
-        </div>
-      </div>
+      </section>
     </main>
   </div>
-  <script src="/static/js/app.js"></script>
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
